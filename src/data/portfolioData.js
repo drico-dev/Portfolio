@@ -224,7 +224,7 @@ export const projects = [
     title: "Portfolio Drico-dev — Site vitrine",
     category: "Sites vitrines",
     description:
-      "Application web de gestion d'affectation de logements, avec tableau de bord temps réel pour suivre chaque affectation de la réception à l'affectation.",
+      "présentation de ma personne, de mes compétences et de mes réalisations en tant que développeur web et mobile freelance.",
     stack: ["HTML", "CSS", "PHP", "MySQL"],
     image: "/assets/projects/portfolio.png",
     links: { demo: "", code: "" },
