@@ -225,7 +225,7 @@ export const projects = [
     category: "Sites vitrines",
     description:
       "présentation de ma personne, de mes compétences et de mes réalisations en tant que développeur web et mobile freelance.",
-    stack: ["HTML", "CSS", "PHP", "MySQL"],
+    stack: ["React", "Tailwind CSS", "Vite", "JavaScript"],
     image: "/assets/projects/portfolio.png",
     links: { demo: "", code: "" },
     featured: false,
