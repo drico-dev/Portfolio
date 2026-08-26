@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Active le mode sombre piloté par une classe .dark sur <html> (et non par prefers-color-scheme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Typographie */
+  --font-display: "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-body: "Inter", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Neutres (bases noir / blanc, teintées de bleu très sombre) */
+  --color-ink-950: #05070d;
+  --color-ink-900: #090d16;
+  --color-ink-800: #10141f;
+  --color-ink-700: #1a2130;
+  --color-ink-600: #2a3346;
+  --color-ink-500: #5b6478;
+  --color-ink-400: #8891a3;
+  --color-ink-300: #b7bfcc;
+  --color-ink-200: #dde1e8;
+  --color-ink-100: #eef1f5;
+  --color-ink-50: #f7f9fb;
+
+  /* Bleu de marque (accent principal) */
+  --color-azure-700: #1a3fc4;
+  --color-azure-600: #1d4ed8;
+  --color-azure-500: #2563eb;
+  --color-azure-400: #3b82f6;
+  --color-azure-300: #60a5fa;
+  --color-azure-200: #93c5fd;
+  --color-azure-100: #dbeafe;
+
+  --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-white text-ink-900 font-body antialiased transition-colors duration-300;
+  }
+
+  html.dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+
+  ::selection {
+    @apply bg-azure-500/25 text-inherit;
+  }
+
+  /* Anneau de focus visible au clavier, cohérent dans les deux thèmes */
+  :focus-visible {
+    outline: 2px solid var(--color-azure-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* Éyebrow façon commentaire de code : // 01 — Section */
+  .eyebrow {
+    @apply font-mono text-xs sm:text-sm tracking-wide text-azure-600 dark:text-azure-400;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .surface {
+    @apply bg-white dark:bg-ink-900 border border-ink-100 dark:border-ink-700;
+  }
+
+  .grid-fade-mask {
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, black 60%, transparent 100%);
+  }
+}
+
+/* Respect de la préférence utilisateur pour une animation réduite */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
